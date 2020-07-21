@@ -3,15 +3,15 @@ const validator = require('validator');
 
 //Carrier Model and Schema
 //Carrier : CarrierId CarrierName CarrierAddress
-
-const Carrier = mongoose.model('Carrier',{
-    Name:{
-        type:String,
+const carrierSchema = new mongoose.Schema({
+    Name: {
+        type: String,
         required: true
     },
-    Address:{
-        type:String
+    Address: {
+        type: String
     }
-})
+}, { timestamps: true })
+const Carrier = mongoose.model('Carrier', carrierSchema)
 
 module.exports = Carrier;

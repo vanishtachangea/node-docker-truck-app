@@ -3,16 +3,16 @@ const validator = require('validator');
 
 //TruckType Model and Schema
 //TruckType : TruckType Description
-
-const TruckType = mongoose.model('TruckType',{
-    type:{
-        type:String,
+const truckTypeSchema = new mongoose.Schema({
+    type: {
+        type: String,
         required: true
     },
-    description:{
-        type:String
+    description: {
+        type: String
     }
 
-})
+}, { timestamps: true })
+const TruckType = mongoose.model('TruckType', truckTypeSchema);
 
-module.exports =TruckType;
+module.exports = TruckType;

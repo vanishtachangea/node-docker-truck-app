@@ -3,25 +3,24 @@ const router = new express.Router();
 const TruckLocation = require('../models/truckLocation');
 
 
-router.post('/truckLocations', async(req,res)=>{
+router.post('/truckLocations', async (req, res) => {
     const truckLocation = new TruckLocation(req.body);
-    try{
-            await truckLocation.save();
-            res.status(200).send(truckLocation);
-        }
-    
-    catch(e){
+    try {
+        await truckLocation.save();
+        res.status(200).send(truckLocation);
+    }
+
+    catch (e) {
         res.status(400).send(e);
     }
 })
 
-router.get('/truckLocations',async (req, res)=>{
-    try{
-        const truckLocations = await TruckLocation.find({});
+router.get('/truckLocations', async (req, res) => {
+    try {
+        const truckLocations = await TruckLocation.find({}).limit(parseInt(req.query.limit)).skip(parseInt(req.query.skip));
         res.status(201).send(truckLocations);
     }
-    catch(e)
-    {
+    catch (e) {
         res.status(500).send();
     }
 })
