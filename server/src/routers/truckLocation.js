@@ -11,7 +11,7 @@ router.post('/truckLocations', async (req, res) => {
     }
 
     catch (e) {
-        res.status(400).send(e);
+        res.status(400).send(e).json({success: false, error:e.message});
     }
 })
 
@@ -21,7 +21,7 @@ router.get('/truckLocations', async (req, res) => {
         res.status(201).send(truckLocations);
     }
     catch (e) {
-        res.status(500).send();
+        res.status(500).json({success: false, error:e.message});
     }
 })
 /*

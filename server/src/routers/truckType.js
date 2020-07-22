@@ -9,7 +9,7 @@ router.post('/trucktypes', async (req, res) => {
         res.status(201).send(truck);
     }
     catch (e) {
-        res.status(400).send(e);
+        res.status(400).send(e).json({success: false, error:e.message});
     }
 })
 
@@ -19,7 +19,7 @@ router.get('/trucktypes', async (req, res) => {
         res.status(201).send(trucktypes);
     }
     catch (e) {
-        res.status(500).send();
+        res.status(500).json({success: false, error:e.message});
     }
 })
 
@@ -29,7 +29,7 @@ router.get('/trucktypes/:id', async (req, res) => {
         res.status(201).send(truckType);
     }
     catch (e) {
-        res.status(500).send();
+        res.status(500).json({success: false, error:e.message});
     }
 })
 
@@ -44,7 +44,7 @@ router.put('/trucktypes/:id', async (req, res) => {
         res.status(201).send(truck);
     }
     catch (e) {
-        res.status(500).send();
+        res.status(500).json({success: false, error:e.message});
     }
 })
 
@@ -57,7 +57,7 @@ router.delete('/trucktypes/:id', async (req, res) => {
         res.status(201).send(truck);
     }
     catch (e) {
-        res.status(500).send();
+        res.status(500).json({success: false, error:e.message});
     }
 })
 
