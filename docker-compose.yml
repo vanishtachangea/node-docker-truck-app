@@ -1,40 +1,14 @@
-version: "3"
+version: '3'
 services:
+  web:
+    image: "docker-node-mongo-todo-app"
+    build: .
+    command: "npm run dev"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - "mongo"
   mongo:
-    image: mongo
-    volumes:
-      - ./data:/data/db
+    image: "mongo"
     ports:
       - "27017:27017"
-  nginx:
-    image: nginx:latest
-    depends_on:
-      - api
-      - client
-    restart: always    
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./nginx
-    ports:
-      - '4050:80'
-  api:
-    depends_on: 
-      - mongo
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./server
-    volumes: 
-      - /app/node_modules
-      - ./server:/app
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
-      - MONGO_INITDB_ROOT_PASSWORD=secret
-  client:
-    stdin_open: true
-    build:  
-      dockerfile: Dockerfile.dev
-      context: ./client
-    volumes:
-      - /app/node_modules
-      - ./client:/app
-      
