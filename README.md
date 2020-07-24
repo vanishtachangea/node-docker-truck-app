@@ -4,7 +4,7 @@
 This is Node.js API built to do CRUD Operations on TRUCK DATABASE
 
 ## Requirements
-Intro
+### Intro
 In this exercise you are going create a Rest full API, that will be responsible for saving and
 listing trucks data as following
 - Create and Edit a Truck
@@ -12,7 +12,7 @@ listing trucks data as following
 - List all Trucks
 - Create/save Truck Location (latitude/longitude)
 - List all locations of a truck
-Technical Requirements
+### Technical Requirements
 - You must use the NodeJS in backend
 - You must save the data in a database.
 - You can use other libraries to help if you want, ex:

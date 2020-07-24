@@ -1,0 +1,581 @@
+{
+	"info": {
+		"_postman_id": "ad5695cb-08a9-46fb-a215-7f3346ec1b3c",
+		"name": "Trucks API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Trucks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/trucks?limit=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"trucks"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Trucks By TruckType",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/trucks/truckType/5f15a238ca2f172d6c72ca0f?limit=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"trucks",
+						"truckType",
+						"5f15a238ca2f172d6c72ca0f"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get TruckTypes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"ytuv\",\n\t\"address\":\"Munich\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/trucktypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"trucktypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Trucks Filter Pagination Sort",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"ytuv\",\n\t\"address\":\"Munich\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/trucks?sortBy=plateNumber:desc",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"trucks"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "plateNumber:desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get TruckTypes By Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"ytuv\",\n\t\"address\":\"Munich\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/trucktypes/5f15a0ab3ec5265a1416a43a",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"trucktypes",
+						"5f15a0ab3ec5265a1416a43a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get TruckLocations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\":\"Type 1\",\n\t\"description\":\"Semi-Trailer Truck\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/truckLocations",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"truckLocations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add TruckType",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\":\"Type 11\",\n\t\"description\":\"Semi-Trailer Truck\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/trucktypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"trucktypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Current Profile - User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjE4NmEzZGQ5N2Q3MzFiNWNhMzhmZTYiLCJpYXQiOjE1OTU0MzU1ODF9.4zzSMIDGKhuSO5-2vUHOJRFxfffKOnTp4sBlCi0sc0Q",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/me",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjE4NmEzZGQ5N2Q3MzFiNWNhMzhmZTYiLCJpYXQiOjE1OTU0MzU1ODF9.4zzSMIDGKhuSO5-2vUHOJRFxfffKOnTp4sBlCi0sc0Q"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/me",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c2681a99-0cca-451e-b30a-3d26ae62ba86",
+						"exec": [
+							"if(pm.response.code ===201){\r",
+							"    pm.environment.set('authToken',pm.response.json().token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"John34\",\n\t\"lastName\":\"Doe34\",\n\t\"email\":\"John3.do5@gmail.com\",\n\t\"password\":\"pwd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "292a8ab2-1319-4526-a69f-5c64863aba29",
+						"exec": [
+							"if(pm.response.code ===201){\r",
+							"    pm.environment.set('authToken',pm.response.json().token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"John3.doep3t4@gmail.com\",\n\"password\":\t\"pwd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "176dd87d-3989-4666-a93d-06f654d3f6a5",
+						"exec": [
+							"if(pm.response.code ===201){\r",
+							"    pm.environment.set('authToken',pm.response.json().token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"John3.doe8@gmail.com\",\n\"password\":\t\"pwd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Logout All",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52a33977-d968-47e5-a58e-ba5e57f595bd",
+						"exec": [
+							"if(pm.response.code ===201){\r",
+							"    pm.environment.set('authToken',pm.response.json().token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"John3.doe8@gmail.com\",\n\"password\":\t\"pwd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/logoutAll",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"logoutAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"new JOhn\",\n\t\"lastName\":\"Doe2Jhonads3\",\n\t\"password\":\"pwd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/me",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Truck",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"plateNumber\":\"Newzw20785\"\n},\n{\n\"plateNumber\":\"zw 2075 08\"\t,\n\"truckType\":\"5f15a238ca2f172d6c72ca0f\"\n}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/trucks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"trucks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add TruckLocation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"truck\":\"5f15ad9b4ed5216690071257\",\n\"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [-73.9811382,40.7788729]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/truckLocations",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"truckLocations"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f4b89318-c12d-400a-86f2-7604fa1eb580",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2b4d9c7c-1ddb-40c0-a71e-9cf385873ff7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
