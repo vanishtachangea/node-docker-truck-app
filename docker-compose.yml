@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    image: "docker-node-mongo-todo-app"
+    image: "Node-Docker-Truck-App"
     build: .
     command: "npm run dev"
     ports:

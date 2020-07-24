@@ -2,6 +2,7 @@ language: generic
 sudo: required
 services: 
   - docker
+  - mongodb
 
 before_install: 
   - docker build -t vc/docker-node -f Dockerfile.dev . 
@@ -9,6 +10,4 @@ before_install:
 script: 
   - docker run -e CI=true vc/docker-node npm run test-travis -- --coverage
 
-deploy:
-  provider: elasticbeanstalk
 
