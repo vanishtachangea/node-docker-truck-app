@@ -7,8 +7,8 @@
     "start": "nodemon src/index.js",
     "test": "env-cmd -f config/test.env jest --watch --runInBand",
     "dev": "env-cmd -f config/dev.env nodemon src/index.js",
-    "test-travis":"env-cmd -f travis.env jest --watch --runInBand",
-    "dev-travis":"env-cmd -f travis.env nodemon src/index.js"
+    "test-travis":"env-cmd -f src/travis.env jest --watch --runInBand",
+    "dev-travis":"env-cmd -f src/travis.env nodemon src/index.js"
   },
   "jest": {
     "testEnvironment": "node"
