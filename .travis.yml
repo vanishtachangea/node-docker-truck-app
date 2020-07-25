@@ -13,4 +13,4 @@ before_install:
   - docker run -d -p 27017-27019:27017-27019 --name mongo mongo:latest
   - docker build -t vc/node -f Dockerfile.dev . 
 script:
-  - docker run vc/node npm test-travis -- --coverage
+  - docker run vc/node npm run test-travis -- --coverage
