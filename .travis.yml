@@ -1,5 +1,5 @@
 language: generic
-sudo: required
+sudo: false
 node_js:
   - 9
   - 8
@@ -7,10 +7,10 @@ node_js:
 services: 
   - docker
   - mongodb
-before_install:
-  - docker build -t vc/docker-truck -f Dockerfile.test .
+before_install: 
   - sleep 15
-  - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+  - mongo trucks-db --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+  - docker build -t vc/docker-truck -f Dockerfile.test .
 script:
   - docker run -e CI=true vc/docker-truck npm run test -- --coverage
 deploy:
