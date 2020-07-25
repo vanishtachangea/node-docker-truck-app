@@ -3,10 +3,10 @@ node_js:
   - "8"
 services:
   - docker
+  - mongodb
 before_install:
   - docker build -t vc/node -f Dockerfile.dev . 
-  - docker pull mongo 
 before_script:
-  - docker-compose up -d --build
+  - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
 script:
   - docker run vc/node npm test -- --coverage
