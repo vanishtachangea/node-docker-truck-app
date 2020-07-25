@@ -10,6 +10,6 @@ env:
   PORT: $PORT
   JWT_SECRET: $JWT_SECRET
 before_install:
-  - docker build -t vc/node -f Dockerfile.dev . 
+  - docker build -t vc/node -f Dockerfile.test . 
 script:
-  - docker run vc/node npm run start -- --coverage
+  - docker run vc/node npm run test -- --coverage
