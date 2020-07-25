@@ -4,7 +4,6 @@ node_js:
   - "8"
 services:
   - docker
-  - mongodb
 before_install:
   - docker pull mongo:latest
   - docker run -d -p 27017-27019:27017-27019 --name mongo mongo:latest
