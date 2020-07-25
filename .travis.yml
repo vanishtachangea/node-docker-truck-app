@@ -1,23 +1,12 @@
 language: node_js
 node_js:
   - "8"
-dist: trusty
 services:
   - docker
-  - mongodb
-env:
-  - NODE_ENV=ci
-cache:
-  directories:
-    - node_modules
-    - client/node_modules
-install:
-  - npm install
-  - npm run build
+before_install:
+  - docker build -t vc/node -f Dockerfile.dev 
 script:
-  - nohup npm run start &
-  - sleep 3
-  - npm run test
+  - docker run vc/node npm test -- --coverage
 deploy:
 	provider: elasticbeanstalk
 	region: "us-east-1"

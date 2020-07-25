@@ -32,19 +32,19 @@ listing trucks data as following
 - Ensure Node and MongoDB is installed on your machine
 - Navigate to this project directory 
 - Run following commands
-* ```npm install```
-* ```npm run dev```
+ ```npm install```
+ ```npm run dev```
 
 ## Running JEST Tests Locally
 - Ensure Node and MongoDB is installed on your machine
 - Navigate to this project directory 
 - Run following commands
-* ```npm run test```
+ ```npm run test```
 
 ## Running Application on Docker
 - Ensure Docker is installed on your machine
 - Navigate to this Project directory
 - Run following commands
-* ```docker-compose build```
-* ```docker-compose up```
+ ```docker-compose build```
+ ```docker-compose up```
 
