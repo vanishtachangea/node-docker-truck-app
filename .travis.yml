@@ -1,13 +1,27 @@
 language: generic
 sudo: required
+node_js:
+  - 9
+  - 8
+  - node
 services: 
   - docker
   - mongodb
-
-before_install: 
-  - docker build -t vc/docker-node -f Dockerfile.dev . 
-
-script: 
-  - docker run -e CI=true vc/docker-node npm run test-travis -- --coverage
-
-
+before_install:
+  - docker build -t vc/docker-truck -f Dockerfile.test .
+  - sleep 15
+  - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+script:
+  - docker run -e CI=true vc/docker-truck npm run test -- --coverage
+deploy:
+	provider: elasticbeanstalk
+	region: "us-east-1"
+	app: "Docker-Node-Trucks"
+	env: "DockerNodeTrucks-env"
+	bucket_name: "elasticbeanstalk-us-east-1-424043981863"
+	bucket_path: "Docker-Node-Trucks"
+	on:
+		branch: master	
+	access_key_id: $AWS_ACCESS_KEY
+	secret_access_key: 
+		secure: $AWS_SECRET_KEY
