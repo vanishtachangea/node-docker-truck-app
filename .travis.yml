@@ -4,9 +4,9 @@ node_js:
 services:
   - docker
 before_install:
-  - docker build -t vc/node -f Dockerfile.dev .
+  - docker build -t vc/node -f Dockerfile.dev . 
+  - docker pull mongo 
 before_script:
-  - sleep 15
-  - mongo trucks-db --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
+  - docker-compose up -d --build
 script:
   - docker run vc/node npm test -- --coverage
