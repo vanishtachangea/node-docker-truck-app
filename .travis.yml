@@ -1,12 +1,13 @@
 language: node_js
+sudo : required
 node_js:
   - "8"
 services:
   - docker
   - mongodb
 before_install:
+  - docker pull mongo:latest
+  - docker run -d -p 27017-27019:27017-27019 --name mongo mongo:latest
   - docker build -t vc/node -f Dockerfile.dev . 
-before_script:
-  - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
 script:
   - docker run vc/node npm test -- --coverage
