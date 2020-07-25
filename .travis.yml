@@ -1,18 +1,21 @@
-language: generic
-sudo: false
+language: node_js
 node_js:
-  - 9
-  - 8
-  - node
-services: 
-  - docker
+  - "8"
+services:
   - mongodb
-before_install: 
-  - sleep 15
-  - mongo trucks-db --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
-  - docker build -t vc/docker-truck -f Dockerfile.test .
+env:
+  - NODE_ENV=ci
+cache:
+  directories:
+    - node_modules
+    - client/node_modules
+install:
+  - npm install
+  - npm run build
 script:
-  - docker run -e CI=true vc/docker-truck npm run test -- --coverage
+  - nohup npm run start &
+  - sleep 3
+  - npm run test
 deploy:
 	provider: elasticbeanstalk
 	region: "us-east-1"
