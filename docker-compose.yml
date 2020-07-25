@@ -1,9 +1,13 @@
 version: '3'
 services:
   web:
-    image: "Node-Docker-Truck-App"
-    build: .
-    command: "npm run dev"
+    image: "node-docker-truck-app"
+    build:
+      dockerfile: Dockerfile.test
+      context: .
+    volumes:
+      - /app/node_modules
+      - .:/app
     ports:
       - "5000:5000"
     depends_on:
