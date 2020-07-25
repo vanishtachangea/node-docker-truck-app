@@ -7,7 +7,7 @@ services:
   - mongodb
 env: 
   MONGODB_URL: $MONGODB_URL
-  PORT: $MONGODB_URL
+  PORT: $PORT
   JWT_SECRET: $JWT_SECRET
 before_install:
   - docker build -t vc/node -f Dockerfile.dev . 
