@@ -12,4 +12,4 @@ env:
 before_install:
   - docker build -t vc/node -f Dockerfile.test . 
 script:
-  - docker run vc/node npm run test -- --coverage
+  - docker run vc/node npm run test-travis -- --coverage
