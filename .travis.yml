@@ -6,7 +6,7 @@ services:
   - docker
   - mongodb
 env: 
-  MONGODB_URL: "mongodb://127.0.0.1:27017/trucks-db-test"
+  MONGODB_URL: "mongodb://localhost:27017/trucks-db"
   PORT: "5000"
   JWT_SECRET: "JWT_SECRET"
 before_install:
