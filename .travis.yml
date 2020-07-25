@@ -5,5 +5,8 @@ services:
   - docker
 before_install:
   - docker build -t vc/node -f Dockerfile.dev .
+before_script:
+  - sleep 15
+  - mongo trucks-db --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'
 script:
   - docker run vc/node npm test -- --coverage
