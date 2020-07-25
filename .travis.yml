@@ -4,13 +4,12 @@ node_js:
   - "8"
 services:
   - docker
+  - mongodb
 env: 
   MONGODB_URL: $MONGODB_URL
   PORT: $MONGODB_URL
   JWT_SECRET: $JWT_SECRET
 before_install:
-  - docker pull mongo:latest
-  - docker run -d -p 27017-27019:27017-27019 --name mongo mongo:latest
   - docker build -t vc/node -f Dockerfile.dev . 
 script:
   - docker run vc/node npm run test-travis -- --coverage
