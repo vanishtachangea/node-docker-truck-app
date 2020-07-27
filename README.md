@@ -48,3 +48,7 @@ listing trucks data as following
  ```docker-compose build```
  ```docker-compose up```
 
+## Next Steps
+- Finish the CI/CD pipeline to Travis and AWS
+- Run the postman tests automatically upon deployment on a test version of database.
+
