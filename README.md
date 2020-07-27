@@ -51,4 +51,6 @@ listing trucks data as following
 ## Next Steps
 - Finish the CI/CD pipeline to Travis and AWS
 - Run the postman tests automatically upon deployment on a test version of database.
+- Finish Swagger /api-docs page
+- Improve Authentication 
 
