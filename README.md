@@ -1,5 +1,5 @@
 # node-docker-truck-app
-
+[![Build Status](https://travis-ci.com/vanishtachangea/node-docker-truck-app-withoutClient.svg?branch=master)](https://travis-ci.com/github/vanishtachangea/node-docker-truck-app-withoutClient)
 ## About
 This is Node.js API built to do CRUD Operations on TRUCK DATABASE
 
