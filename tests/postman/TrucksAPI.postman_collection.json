@@ -1,10 +1,175 @@
 {
 	"info": {
-		"_postman_id": "ad5695cb-08a9-46fb-a215-7f3346ec1b3c",
+		"_postman_id": "181d07e7-8ba4-403c-9e56-acd06ff24e66",
 		"name": "Trucks API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c2681a99-0cca-451e-b30a-3d26ae62ba86",
+						"exec": [
+							"if(pm.response.code ===201){\r",
+							"    pm.environment.set('authToken',pm.response.json().token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"John34\",\n\t\"lastName\":\"Doe34\",\n\t\"email\":\"John3.do5@gmail.com\",\n\t\"password\":\"pwd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "292a8ab2-1319-4526-a69f-5c64863aba29",
+						"exec": [
+							"if(pm.response.code ===201){\r",
+							"    pm.environment.set('authToken',pm.response.json().token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"John3.doep3t4@gmail.com\",\n\"password\":\t\"pwd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add TruckType",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\":\"Type 11\",\n\t\"description\":\"Semi-Trailer Truck\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/trucktypes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"trucktypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Truck",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"plateNumber\":\"Newzw20785\"\n},\n{\n\"plateNumber\":\"zw 2075 08\"\t,\n\"truckType\":\"5f15a238ca2f172d6c72ca0f\"\n}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/trucks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"trucks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add TruckLocation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"truck\":\"5f15ad9b4ed5216690071257\",\n\"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [-73.9811382,40.7788729]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/truckLocations",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"truckLocations"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Get Trucks",
 			"protocolProfileBehavior": {
@@ -201,32 +366,6 @@
 			"response": []
 		},
 		{
-			"name": "Add TruckType",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"type\":\"Type 11\",\n\t\"description\":\"Semi-Trailer Truck\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/trucktypes",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"trucktypes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Get Current Profile - User",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -258,126 +397,6 @@
 					"path": [
 						"users",
 						"me"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete User",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"type": "text",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjE4NmEzZGQ5N2Q3MzFiNWNhMzhmZTYiLCJpYXQiOjE1OTU0MzU1ODF9.4zzSMIDGKhuSO5-2vUHOJRFxfffKOnTp4sBlCi0sc0Q"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/users/me",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"users",
-						"me"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create User",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "c2681a99-0cca-451e-b30a-3d26ae62ba86",
-						"exec": [
-							"if(pm.response.code ===201){\r",
-							"    pm.environment.set('authToken',pm.response.json().token)\r",
-							"}"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"firstName\":\"John34\",\n\t\"lastName\":\"Doe34\",\n\t\"email\":\"John3.do5@gmail.com\",\n\t\"password\":\"pwd\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/users",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Login User",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "292a8ab2-1319-4526-a69f-5c64863aba29",
-						"exec": [
-							"if(pm.response.code ===201){\r",
-							"    pm.environment.set('authToken',pm.response.json().token)\r",
-							"}"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"email\": \"John3.doep3t4@gmail.com\",\n\"password\":\t\"pwd\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/users/login",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"users",
-						"login"
 					]
 				}
 			},
@@ -493,13 +512,19 @@
 			"response": []
 		},
 		{
-			"name": "Add Truck",
+			"name": "Delete User",
 			"request": {
-				"method": "POST",
-				"header": [],
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjE4NmEzZGQ5N2Q3MzFiNWNhMzhmZTYiLCJpYXQiOjE1OTU0MzU1ODF9.4zzSMIDGKhuSO5-2vUHOJRFxfffKOnTp4sBlCi0sc0Q"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "[{\n\t\"plateNumber\":\"Newzw20785\"\n},\n{\n\"plateNumber\":\"zw 2075 08\"\t,\n\"truckType\":\"5f15a238ca2f172d6c72ca0f\"\n}\n]",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -507,38 +532,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/trucks",
+					"raw": "{{url}}/users/me",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"trucks"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add TruckLocation",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\"truck\":\"5f15ad9b4ed5216690071257\",\n\"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [-73.9811382,40.7788729]\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/truckLocations",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"truckLocations"
+						"users",
+						"me"
 					]
 				}
 			},

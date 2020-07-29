@@ -1,0 +1,30 @@
+version: '3'
+services:
+  web:
+    image: "node-docker-truck-app"
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    volumes:
+      - /app/node_modules
+      - .:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - "mongo"
+    environment:
+      - PORT=5000
+      - MONGODB_URL=mongodb://mongo:27017/trucks-db
+      - JWT_SECRET=clientsecretToChange
+  mongo:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+  postman:
+    container_name: postman
+    image: postman/newman_ubuntu1404
+    command:
+      run "https://www.getpostman.com/collections/ab9d1ecd1bc57cdf3598"
+      -e /etc/newman/tests/postman/TRUCKS-API-DEV-DOCKER.postman_environment.json
+    volumes:
+      - C:/Users/vanis/node-docker-truck-app-withoutclient/tests/postman:/etc/newman
