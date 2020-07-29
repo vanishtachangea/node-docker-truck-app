@@ -48,6 +48,15 @@ listing trucks data as following
  ```docker-compose build```
  ```docker-compose up```
 
+## Running the Postman Tests Locally 
+```docker run -v ./tests/postman/:/tmp/collections -t postman/newman_ubuntu1404 run /tmp/collections/TrucksAPI.postman_collection.json --environment  /tmp/collections/TRUCKS-API-DEV-DOCKER.postman_environment.json```
+![](https://training-udacity-project1.s3.amazonaws.com/static/media/postman.png)
+
+
+## API DOCS
+- Navigate to [http://localhost:5000/api-docs](http://localhost:5000/api-docs)
+
+
 ## Next Steps
 - Finish the CI/CD pipeline to Travis and AWS
 - Run the postman tests automatically upon deployment on a test version of database.
